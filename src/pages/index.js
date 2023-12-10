@@ -13,8 +13,7 @@ export default function Home() {
     // Call OpenAI API to get the bot's response
     const response = await getOpenAIResponse(msg);
     setMessages([
-      ...messages,
-      { content: input, role: "user" },
+      ...msg,
       { content: response, role: "assistant" },
     ]);
   };
@@ -36,7 +35,7 @@ export default function Home() {
   return (
     <div
       id="chat-container"
-      className="overflow-y-auto p-10 rounded-md"
+      className="overflow-y-auto p-10 rounded-md max-w-3xl mx-auto"
     >
       <div>
         {messages.map((message, index) => (
@@ -57,7 +56,7 @@ export default function Home() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 p-2 border rounded-md text-white bg-transparent focus:outline-none"
+          className="flex-1 p-2 border rounded-md text-black bg-transparent focus:outline-none"
         />
         <button
           onClick={sendMessage}
